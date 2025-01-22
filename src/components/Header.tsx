@@ -1,0 +1,30 @@
+import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
+
+export default function Header()
+{
+    return (
+        <section className="flex justify-between absolute w-full px-32 py-4 text-whitesmoke select-none">
+
+            <Link href="/" className="">ConjureUI</Link>
+
+            <div className="flex justify-center gap-5">
+                <Link href="/DeleteConfirm" className="cursor-pointer">Delete Confirm</Link>
+                <Link href="/">item 2</Link>
+                <Link href="/">item 3</Link>
+                <Link href="/">item 4</Link>
+            </div>
+
+            <a
+                href="https://github.com/scheuermann-markus/ConjureUI"
+                target="_blank"
+                className="text-right text-2xl"
+                title="View on Github"
+            >
+                <FaGithub/>
+            </a>
+
+
+        </section>
+    );
+}

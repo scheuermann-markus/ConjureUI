@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function App()
 {
-    const cssHoverCard = "text-center content-center bg-white h-[230px] rounded-[6px] bg-center bg-cover transition-transform duration-300 cursor-pointer hover:transform hover:-translate-y-1.5";
+    const cssHoverCard = "text-center content-center select-none bg-white h-[230px] rounded-[6px] bg-center bg-cover transition-transform duration-300 cursor-pointer hover:transform hover:-translate-y-1.5";
 
     return (
         <section className="h-screen flex gap-12 mx-32 items-center">
