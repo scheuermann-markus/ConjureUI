@@ -97,7 +97,7 @@ const Modal: React.FC<ModalProps> = ({ message, onClose, type }) =>
         <>
             <style>
                 {`
-                    .modal-overlay {
+                    .conjure__overlay {
                         position: fixed;
                         top: 0;
                         left: 0;
@@ -110,53 +110,92 @@ const Modal: React.FC<ModalProps> = ({ message, onClose, type }) =>
                         z-index: 100;
                     }
                     
-                    .modal-content {
+                    .conjure__modal {
                         max-width: 50%;
+                        min-width: 300px;
                         background: white;
                         padding: 1.5rem 2rem;
                         border-radius: 6px;
                         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
                     }
                     
-                    .modal-message {
+                    .conjure__message {
                         font-size: large;
                     }
                     
-                    .modal-buttons {
+                    .conjure__button-container {
                         margin-top: 30px;
                         display: flex;
+                        gap: 1rem;
                         justify-content: space-between;
                     }
                     
-                    .delete-button {
+                    .conjure__button {
                         cursor: pointer;
-                        border: 1px solid red;
-                        border-radius: 6px;
-                        padding: 0.5rem 1rem;
+                        border-radius: 4px;
+                        padding: 6px 16px;
+                        min-width: 80px;
+                        transition: all 0.2s;
+                    }
+                    .conjure__button:hover {
                         transition: all 0.2s;
                     }
                     
-                     .delete-button:hover {
+                    .conjure__button--cancel {
+                        color: #212529;
+                        background-color: #f8f9fa;
+                        margin-left: 1rem;
+                    }
+                    .conjure__button--cancel:hover {
+                        background-color: #e2e6ea;
+                        border-color: #dae0e5;
+                    }
+                    
+                    .conjure__button--danger {
                         color: white;
-                        background-color: red;
-                        transition: all 0.2s;
+                        background-color: #dc3545;
+                    } 
+                     .conjure__button--danger:hover {
+                        background-color: #c82333;
+                        border-color: #bd2130;
+                     }
+                     
+                     .conjure__button--yes {
+                        color: white;
+                        background-color: #28a745;
+                     }
+                     .conjure__button--yes:hover {
+                        background-color: #218838;
+                        border-color: #1e7e34;
                      }
                 `}
             </style>
-            <div className="modal-overlay">
-                <div className="modal-content">
-                    <div className="modal-message">{message}</div>
-                    <div className="modal-buttons">
+            <div className="conjure__overlay">
+                <div className="conjure__modal">
+                    <div className="conjure__message">{message}</div>
+                    <div className="conjure__button-container">
                         {type === 'confirmation' ? (
                             <>
-                                <button onClick={() => onClose(ModalAction.YES)}>Yes</button>
-                                <button onClick={() => onClose(ModalAction.NO)}>No</button>
-                                <button onClick={() => onClose(ModalAction.CANCEL)}>Cancel</button>
+                                <button onClick={() => onClose(ModalAction.YES)}
+                                        className="conjure__button conjure__button--yes">Yes
+                                </button>
+                                <div>
+                                    <button onClick={() => onClose(ModalAction.NO)}
+                                            className="conjure__button conjure__button--danger">No
+                                    </button>
+                                    <button onClick={() => onClose(ModalAction.CANCEL)}
+                                            className="conjure__button conjure__button--cancel">Cancel
+                                    </button>
+                                </div>
                             </>
                         ) : (
                             <>
-                                <button onClick={() => onClose(ModalAction.DELETE)} className="delete-button">Delete</button>
-                                <button onClick={() => onClose(ModalAction.CANCEL)}>Cancel</button>
+                                <button onClick={() => onClose(ModalAction.DELETE)}
+                                        className="conjure__button conjure__button--danger">Delete
+                                </button>
+                                <button onClick={() => onClose(ModalAction.CANCEL)}
+                                        className="conjure__button conjure__button--cancel">Cancel
+                                </button>
                             </>
                         )}
                     </div>
