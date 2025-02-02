@@ -2,6 +2,7 @@
 
 import { useConfirmModal, ModalAction } from "@/components/ConfirmModal";
 import DeleteConfirmEditor from "@/app/ConfirmModal/components/DeleteConfirmEditor";
+import YesNoCancelEditor from "@/app/ConfirmModal/components/YesNoCancelEditor";
 
 export default function Page()
 {
@@ -40,7 +41,7 @@ export default function Page()
     }
 
     return (
-        <section className="mx-32 mt-10 text-whitesmoke">
+        <section className="mx-32 my-10 text-whitesmoke">
             <h1 className="text-3xl">Confirm Modal</h1>
             <hr className="border-0 border-t-2 mt-2 mb-12"/>
 
@@ -48,7 +49,7 @@ export default function Page()
                 <div className="w-1/2 flex items-center justify-center">
                     <button
                         onClick={openDeleteConfirm}
-                        className="cursor-pointer border border-white rounded-[6px] bg-transparent hover:bg-white hover:text-black transition-colors duration-200 px-4 py-2 select-none"
+                        className="text-gray-300 cursor-pointer border border-gray-300 rounded-[4px] bg-transparent hover:bg-gray-200 hover:text-black transition-colors duration-200 px-6 py-2 select-none"
                     >
                         Show Delete Confirm
                     </button>
@@ -59,14 +60,24 @@ export default function Page()
                 </div>
             </div>
 
+            <br/>
+            <br/>
+            <br/>
 
-            <button
-                onClick={openYesNoCancelModal}
-                className="cursor-pointer border border-white rounded-[6px] bg-transparent hover:bg-white hover:text-black transition-colors duration-200 px-4 py-2 select-none"
-            >
-                Show Yes-No-Cancel Modal
-            </button>
+            <div className="flex w-full">
+                <div className="w-1/2">
+                    <YesNoCancelEditor/>
+                </div>
 
+                <div className="w-1/2 flex items-center justify-center">
+                    <button
+                        onClick={openYesNoCancelModal}
+                        className="text-gray-300 cursor-pointer border border-gray-300 rounded-[4px] bg-transparent hover:bg-gray-200 hover:text-black transition-colors duration-200 px-6 py-2 select-none"
+                    >
+                        Show Yes-No-Cancel Modal
+                    </button>
+                </div>
+            </div>
         </section>
     );
 }
