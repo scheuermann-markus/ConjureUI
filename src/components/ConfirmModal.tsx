@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 export enum ModalAction
@@ -93,6 +93,13 @@ interface ModalProps
 
 const Modal: React.FC<ModalProps> = ({ message, onClose, type }) =>
 {
+    const firstButtonRef = useRef<HTMLButtonElement | null>(null);
+
+    useEffect(() =>
+    {
+        firstButtonRef.current?.focus();
+    }, []);
+
     return ReactDOM.createPortal(
         <>
             <style>
@@ -135,10 +142,13 @@ const Modal: React.FC<ModalProps> = ({ message, onClose, type }) =>
                         border-radius: 4px;
                         padding: 6px 16px;
                         min-width: 80px;
-                        transition: all 0.2s;
+                        transition: background 0.2s;
                     }
                     .conjure__button:hover {
-                        transition: all 0.2s;
+                        transition: background 0.2s;
+                    }
+                    .conjure__button:focus {
+                        outline: 1px solid black;
                     }
                     
                     .conjure__button--cancel {
@@ -176,25 +186,42 @@ const Modal: React.FC<ModalProps> = ({ message, onClose, type }) =>
                     <div className="conjure__button-container">
                         {type === 'confirmation' ? (
                             <>
-                                <button onClick={() => onClose(ModalAction.YES)}
-                                        className="conjure__button conjure__button--yes">Yes
+                                <button
+                                    ref={firstButtonRef}
+                                    onClick={() => onClose(ModalAction.YES)}
+                                    className="conjure__button conjure__button--yes"
+                                >
+                                    Yes
                                 </button>
                                 <div>
-                                    <button onClick={() => onClose(ModalAction.NO)}
-                                            className="conjure__button conjure__button--danger">No
+                                    <button
+                                        onClick={() => onClose(ModalAction.NO)}
+                                        className="conjure__button conjure__button--danger"
+                                    >
+                                        No
                                     </button>
-                                    <button onClick={() => onClose(ModalAction.CANCEL)}
-                                            className="conjure__button conjure__button--cancel">Cancel
+                                    <button
+                                        onClick={() => onClose(ModalAction.CANCEL)}
+                                        className="conjure__button conjure__button--cancel"
+                                    >
+                                        Cancel
                                     </button>
                                 </div>
                             </>
                         ) : (
                             <>
-                                <button onClick={() => onClose(ModalAction.DELETE)}
-                                        className="conjure__button conjure__button--danger">Delete
+                                <button
+                                    ref={firstButtonRef}
+                                    onClick={() => onClose(ModalAction.DELETE)}
+                                    className="conjure__button conjure__button--danger"
+                                >
+                                    Delete
                                 </button>
-                                <button onClick={() => onClose(ModalAction.CANCEL)}
-                                        className="conjure__button conjure__button--cancel">Cancel
+                                <button
+                                    onClick={() => onClose(ModalAction.CANCEL)}
+                                    className="conjure__button conjure__button--cancel"
+                                >
+                                    Cancel
                                 </button>
                             </>
                         )}
