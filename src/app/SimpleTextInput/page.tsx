@@ -2,11 +2,12 @@
 
 import { useSimpleTextInputModal } from "@/components/SimpleTextInput";
 import { useState } from "react";
+import SimpleTextInputEditor from "@/app/SimpleTextInput/components/SimpleTextInputEditor";
 
 export default function Page()
 {
     const { useTextInput } = useSimpleTextInputModal();
-    const [_userInput, setuserInput] = useState<string>('');
+    const [_userInput, setUserInput] = useState<string>('');
 
     const openSimpleTextInput = async (): Promise<void> =>
     {
@@ -14,7 +15,7 @@ export default function Page()
 
         if (action === 'save' && input !== null)
         {
-            setuserInput(input);
+            setUserInput(input);
         }
     }
 
@@ -38,6 +39,10 @@ export default function Page()
                             className="bg-yellow-600 text-gray-900 px-2 py-1 rounded-sm">{_userInput}</span>
                         </div>
                     }
+                </div>
+
+                <div className="w-1/2">
+                    <SimpleTextInputEditor/>
                 </div>
             </div>
         </section>
