@@ -6,12 +6,12 @@ import SimpleTextInputEditor from "@/app/SimpleTextInput/components/SimpleTextIn
 
 export default function Page()
 {
-    const { useTextInput } = useSimpleTextInputModal();
+    const _useSimpleTextInput = useSimpleTextInputModal();
     const [_userInput, setUserInput] = useState<string>('');
 
     const openSimpleTextInput = async (): Promise<void> =>
     {
-        const { action, input } = await useTextInput(_userInput, 'Type in your text');
+        const { action, input } = await _useSimpleTextInput.useTextInput(_userInput, 'Type in your text');
 
         if (action === 'save' && input !== null)
         {

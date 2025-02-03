@@ -1,6 +1,6 @@
 'use client'
 
-import React, {createContext, useContext, useState, ReactNode, useRef, useEffect} from 'react';
+import React, { createContext, useContext, useState, ReactNode, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 interface ModalResponse
@@ -58,7 +58,7 @@ export const useSimpleTextInputModal = (): ModalContextType =>
     const context = useContext(ModalContext);
     if (!context)
     {
-        throw new Error('useSimpleTextInputModal must be used within a SimpleTextInputProvider');
+        throw new Error('useSimpleTextInputModal must be used within a TextInputProvider');
     }
     return context;
 };
@@ -77,15 +77,12 @@ const InputModal: React.FC<InputModalProps> = ({ initialValue, title, onClose })
 
     useEffect(() =>
     {
-        if (inputRef.current)
-        {
-            inputRef.current.focus();
-        }
+        inputRef.current?.focus();
     }, []);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) =>
     {
-        if (e.keyCode === 13 || e.key === 'Enter')
+        if (e.key === 'Enter')
         {
             handleSave();
         }
@@ -133,7 +130,7 @@ const InputModal: React.FC<InputModalProps> = ({ initialValue, title, onClose })
             </style>
             <div className="modal-overlay">
                 <div className="modal-content">
-                    <h2>{title}</h2>
+                    <h2>{title || 'Enter Text'}</h2>
                     <input
                         ref={inputRef}
                         type="text"
@@ -141,13 +138,11 @@ const InputModal: React.FC<InputModalProps> = ({ initialValue, title, onClose })
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={handleKeyDown}
                     />
-                    <div className="modal-buttons">
-                        <button onClick={handleCancel}>Abbrechen</button>
-                        <button onClick={handleSave}>Speichern</button>
-                    </div>
+                    <button onClick={handleSave}>Save</button>
+                    <button onClick={handleCancel}>Cancel</button>
                 </div>
             </div>
         </>,
-        document.getElementById('conjure-root') as HTMLElement
+        document.getElementById('conjure-root')!
     );
 };

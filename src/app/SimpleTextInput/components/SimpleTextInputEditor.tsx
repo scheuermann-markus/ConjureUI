@@ -17,12 +17,14 @@ export default function SimpleTextInputEditor()
     const codeString = `import { useSimpleTextInputModal } from "@/components/SimpleTextInput";
 
 export default function Page() {
-    const { useTextInput } = useSimpleTextInputModal();
+    const _useSimpleTextInput = useSimpleTextInputModal();
     const [userInput, setUserInput] = useState<string>('');
 
     const openSimpleTextInput = async (): Promise<void> =>
     {
-        const { action, input } = await useTextInput(userInput, 'Type in your text');
+        const { action, input } = await _useSimpleTextInput.useTextInput(
+                userInput, 'Heading...'
+            );
 
         if (action === 'save' && input !== null)
         {
