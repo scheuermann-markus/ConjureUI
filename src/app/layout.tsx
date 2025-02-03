@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { ModalProvider } from "@/components/ConfirmModal";
+import { ConjureProvider } from "@/components/ConjureProvider";
 
 
 export const metadata: Metadata = {
@@ -22,10 +22,9 @@ export default function RootLayout({
 
         <Header/>
 
-        <ModalProvider>
-            <div id="modal-root"></div>
+        <ConjureProvider>
             {children}
-        </ModalProvider>
+        </ConjureProvider>
 
         </body>
         </html>

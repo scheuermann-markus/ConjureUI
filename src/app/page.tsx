@@ -14,7 +14,7 @@ export default function App()
                 <div className="grid grid-cols-2 auto-rows-auto gap-x-6 gap-y-4 justify-end content-center">
 
                     <Link href="/ConfirmModal" className={cssHoverCard}>Confirm Modal</Link>
-                    <Link href="/" className={cssHoverCard}/>
+                    <Link href="/SimpleTextInput" className={cssHoverCard}>SimpleTextInput</Link>
                     <Link href="/" className={cssHoverCard}/>
                     <Link href="/" className={cssHoverCard}/>
 

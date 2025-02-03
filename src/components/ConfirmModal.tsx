@@ -24,7 +24,7 @@ interface ModalContextType
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
-export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
+export const ConfirmModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 {
     const [modalData, setModalData] = useState<{
         isOpen: boolean;
@@ -79,7 +79,7 @@ export const useConfirmModal = (): ModalContextType =>
     const context = useContext(ModalContext);
     if (!context)
     {
-        throw new Error('useConfirmModal must be used within a ModalProvider');
+        throw new Error('useConfirmModal must be used within a ConfirmModalProvider');
     }
     return context;
 };
@@ -229,6 +229,6 @@ const Modal: React.FC<ModalProps> = ({ message, onClose, type }) =>
                 </div>
             </div>
         </>,
-        document.getElementById('modal-root') as HTMLElement
+        document.getElementById('conjure-root') as HTMLElement
     );
 };
