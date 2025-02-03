@@ -1,12 +1,15 @@
 'use client'
 
-import { useConfirmModal, ModalAction } from "@/components/ConfirmModal";
+import { ModalAction, useConfirmModal } from "@/components/ConfirmModal";
 import DeleteConfirmEditor from "@/app/ConfirmModal/components/DeleteConfirmEditor";
 import YesNoCancelEditor from "@/app/ConfirmModal/components/YesNoCancelEditor";
+import { useState } from "react";
 
 export default function Page()
 {
     const _useConfirmModal = useConfirmModal();
+    const [_userActionDeleteConfirm, setUserActionDeleteConfirm] = useState<ModalAction | null>(null);
+    const [_userActionYesNoCancelModal, setUserActionYesNoCancelModal] = useState<ModalAction | null>(null);
 
 
     const openDeleteConfirm = async () =>
@@ -16,7 +19,10 @@ export default function Page()
 
         if (userResponse.action === ModalAction.DELETE)
         {
-            // Add delete logic
+            setUserActionDeleteConfirm(ModalAction.DELETE);
+        } else
+        {
+            setUserActionDeleteConfirm(ModalAction.CANCEL);
         }
     }
 
@@ -27,13 +33,13 @@ export default function Page()
         switch (userResponse.action)
         {
             case ModalAction.YES:
-                // Add logic when yes
+                setUserActionYesNoCancelModal(ModalAction.YES);
                 break;
             case ModalAction.NO:
-                // Add logic when no
+                setUserActionYesNoCancelModal(ModalAction.NO);
                 break;
             case ModalAction.CANCEL:
-                // Add logic when cancel
+                setUserActionYesNoCancelModal(ModalAction.CANCEL);
                 break;
             default:
                 break;
@@ -41,9 +47,9 @@ export default function Page()
     }
 
     return (
-        <section className="mx-32 my-10 text-whitesmoke">
+        <section className="mx-32 my-10 text-gray-300">
             <h1 className="text-3xl">Confirm Modal</h1>
-            <hr className="border-0 border-t-2 mt-2 mb-12"/>
+            <hr className="border-gray-300 border-0 border-t-2 mt-2 mb-12"/>
 
             <div className="flex w-full">
                 <div className="w-1/2 flex items-center justify-center">
@@ -53,6 +59,17 @@ export default function Page()
                     >
                         Show Delete Confirm
                     </button>
+
+                    {
+                        _userActionDeleteConfirm && <div className="absolute mt-20">
+                            You pressed:
+                            {
+                                _userActionDeleteConfirm === ModalAction.DELETE ?
+                                    <span className="text-red-500"> DELETE</span> :
+                                    <span> Cancel</span>
+                            }
+                        </div>
+                    }
                 </div>
 
                 <div className="w-1/2">
@@ -76,6 +93,15 @@ export default function Page()
                     >
                         Show Yes-No-Cancel Modal
                     </button>
+
+                    {
+                        _userActionYesNoCancelModal ? <div className="absolute mt-20">
+                            You pressed:
+                            { _userActionYesNoCancelModal === ModalAction.YES && <span className="text-green-500"> YES</span> }
+                            { _userActionYesNoCancelModal === ModalAction.NO && <span className="text-red-500"> NO</span> }
+                            { _userActionYesNoCancelModal === ModalAction.CANCEL && <span> Cancel</span> }
+                        </div> : null
+                    }
                 </div>
             </div>
         </section>
