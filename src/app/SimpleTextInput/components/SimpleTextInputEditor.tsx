@@ -20,7 +20,7 @@ export default function Page() {
     const _useSimpleTextInput = useSimpleTextInputModal();
     const [userInput, setUserInput] = useState<string>('');
 
-    const openSimpleTextInput = async (): Promise<void> =>
+    const openSimpleTextInput = async () =>
     {
         const { action, input } = await _useSimpleTextInput.useTextInput(
                 userInput, 'Heading...'
