@@ -102,7 +102,7 @@ const InputModal: React.FC<InputModalProps> = ({ initialValue, title, onClose })
         <>
             <style>
                 {`
-                    .modal-overlay {
+                    .conjure__overlay {
                         position: fixed;
                         top: 0;
                         left: 0;
@@ -112,24 +112,66 @@ const InputModal: React.FC<InputModalProps> = ({ initialValue, title, onClose })
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        z-index: 100;
                     }
                     
-                    .modal-content {
+                    .conjure__modal {
                         background: white;
                         padding: 20px;
                         border-radius: 4px;
                         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
                     }
                     
-                    .modal-buttons {
-                        margin-top: 20px;
+                    .conjure__input {
+                        padding: 0.25rem 0.5rem;
+                        border: 1px solid gray;
+                        border-radius: 4px;
+                    }
+                    
+                    .conjure__button-container {
                         display: flex;
                         justify-content: space-between;
                     }
+                    
+                    .conjure__button {
+                        cursor: pointer;
+                        border-radius: 4px;
+                        padding: 6px 16px;
+                        min-width: 80px;
+                        transition: background 0.2s;
+                    }
+                    .conjure__button:hover {
+                        transition: background 0.2s;
+                    }
+                    .conjure__button:focus {
+                        outline: 1px solid black;
+                    }
+                    
+                    .conjure__button--yes {
+                        color: white;
+                        background-color: #28a745;
+                     }
+                     .conjure__button--yes:hover {
+                        background-color: #218838;
+                        border-color: #1e7e34;
+                     }
+                    
+                    .conjure__button--cancel {
+                        color: #212529;
+                        background-color: #f8f9fa;
+                        margin-left: 1rem;
+                    }
+                    .conjure__button--cancel:hover {
+                        background-color: #e2e6ea;
+                        border-color: #dae0e5;
+                    }            
                `}
             </style>
-            <div className="modal-overlay">
-                <div className="modal-content">
+            <div className="conjure__overlay">
+                <div className="conjure__modal">
                     <h2>{title || 'Enter Text'}</h2>
                     <input
                         ref={inputRef}
@@ -137,9 +179,12 @@ const InputModal: React.FC<InputModalProps> = ({ initialValue, title, onClose })
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={handleKeyDown}
+                        className="conjure__input"
                     />
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={handleCancel}>Cancel</button>
+                    <div className="conjure__button-container">
+                        <button onClick={handleSave} className="conjure__button conjure__button--yes">Save</button>
+                        <button onClick={handleCancel} className="conjure__button conjure__button--cancel">Cancel</button>
+                    </div>
                 </div>
             </div>
         </>,
