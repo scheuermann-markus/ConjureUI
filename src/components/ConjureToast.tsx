@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useRef } from 'react';
 
 type Severity = 'success' | 'error' | 'warning' | 'info';
 
@@ -19,11 +19,18 @@ export const AlertProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         severity: 'success',
     });
 
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
     const showAlert = (message: string, severity: Severity = 'success', duration = 4000) =>
     {
+        if (timeoutRef.current)
+        {
+            clearTimeout(timeoutRef.current);
+        }
+
         setAlert({ open: true, message, severity });
 
-        setTimeout(() =>
+        timeoutRef.current = setTimeout(() =>
         {
             setAlert((prev) => ({ ...prev, open: false }));
         }, duration);
