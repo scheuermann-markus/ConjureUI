@@ -1,6 +1,7 @@
 'use client'
 
 import { useAlert } from "@/components/ConjureToast";
+import ConjureToastEditor from "@/app/ConjureToast/components/ConjureToastEditor";
 
 export default function Page()
 {
@@ -56,7 +57,7 @@ export default function Page()
                 </div>
 
                 <div className="w-1/2">
-
+                    <ConjureToastEditor />
                 </div>
             </div>
         </section>
