@@ -15,7 +15,7 @@ export default function App()
 
                     <Link href="/ConfirmModal" className={cssHoverCard}>Confirm Modal</Link>
                     <Link href="/SimpleTextInput" className={cssHoverCard}>SimpleTextInput</Link>
-                    <Link href="/" className={cssHoverCard}/>
+                    <Link href="/ConjureToast" className={cssHoverCard}>ConjureToast</Link>
                     <Link href="/" className={cssHoverCard}/>
 
                 </div>
