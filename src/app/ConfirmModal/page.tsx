@@ -1,9 +1,10 @@
 'use client'
 
-import { ModalAction, useConfirmModal } from "@/components/ConfirmModal";
+
 import DeleteConfirmEditor from "@/app/ConfirmModal/components/DeleteConfirmEditor";
 import YesNoCancelEditor from "@/app/ConfirmModal/components/YesNoCancelEditor";
 import { useState } from "react";
+import { ModalAction, useConfirmModal } from "conjure-ui";
 
 export default function Page()
 {

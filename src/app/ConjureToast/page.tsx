@@ -1,7 +1,8 @@
 'use client'
 
-import { useAlert } from "@/components/ConjureToast";
+
 import ConjureToastEditor from "@/app/ConjureToast/components/ConjureToastEditor";
+import { useAlert } from "conjure-ui";
 
 export default function Page()
 {

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { ConjureProvider } from "@/components/ConjureProvider";
+import { ConjureProvider } from "conjure-ui";
+
 
 
 export const metadata: Metadata = {

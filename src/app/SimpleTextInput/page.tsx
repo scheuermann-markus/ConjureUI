@@ -1,8 +1,8 @@
 'use client'
 
-import { useSimpleTextInputModal } from "@/components/SimpleTextInput";
 import { useState } from "react";
 import SimpleTextInputEditor from "@/app/SimpleTextInput/components/SimpleTextInputEditor";
+import { useSimpleTextInputModal } from "conjure-ui";
 
 export default function Page()
 {
