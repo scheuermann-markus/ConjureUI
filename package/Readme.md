@@ -5,7 +5,7 @@
 Wrap your application with the **ConjureProvider**.
 In your layout.tsx (for NEXT.js projects) or App.tsx (for React projects)
 ```tsx
-import { ConjureProvider } from "";
+import { ConjureProvider } from "conjure-ui";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
