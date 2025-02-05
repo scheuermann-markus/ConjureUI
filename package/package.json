@@ -1,9 +1,9 @@
 {
-  "name": "@markus-scheuermann/conjure-ui",
+  "name": "conjure-ui",
   "version": "0.1.0",
   "description": "React UI components",
-  "main": "dist/ConjureProvider.js",
-  "types": "dist/ConjureProvider.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
