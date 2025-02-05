@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { ConfirmModalProvider } from "@/components/ConfirmModal";
-import { TextInputProvider } from "@/components/SimpleTextInput";
-import { AlertProvider } from "@/components/ConjureToast";
+import { ConfirmModalProvider } from "./ConfirmModal";
+import { TextInputProvider } from "./SimpleTextInput";
+import { AlertProvider } from "./ConjureToast";
 
 export const ConjureProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
