@@ -9,10 +9,8 @@ export default function Header()
             <Link href="/" className="text-2xl hover:text-gray-100">ConjureUI</Link>
 
             <div className="flex justify-center gap-5">
-                <Link href="/ConfirmModal" className="cursor-pointer hover:text-gray-100">Confirm Modal</Link>
-                <Link href="/" className="cursor-pointer hover:text-gray-100">item 2</Link>
-                <Link href="/" className="cursor-pointer hover:text-gray-100">item 3</Link>
-                <Link href="/" className="cursor-pointer hover:text-gray-100">item 4</Link>
+                <Link href="/" className="cursor-pointer hover:text-gray-100">Get Started</Link>
+                <Link href="/" className="cursor-pointer hover:text-gray-100">Documentation</Link>
             </div>
 
             <div className="flex items-center gap-4">
